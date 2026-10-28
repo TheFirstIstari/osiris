@@ -35,3 +35,14 @@ Reference box: `cachyos-x8664` (Minisforum MS-A2, Ryzen 9 9955HX), SSH as `power
    damage, not media. Full block backup at `/root/esp-backup-20261028.img` on the box.
    DO NOT REBOOT until repaired: Limine may not be able to load kernel/initramfs.
    Repair (umount + `fsck.vfat`, or reformat + regenerate) needs explicit approval.
+
+9. **ESP repaired (Oct 28).** In-place `fsck.vfat -a` truncated bad chains
+   (splash → 0 bytes, cosmetic) but the tool spun CPU-only with no I/O progress on
+   deeper damage (known 4.2 loop behavior) — killed, pivoted to reformat+regenerate:
+   `mkfs.vfat -F32 -i 5566FE99` (UUID preserved, fstab intact), reinstalled
+   `linux-cachyos`, `linux-cachyos-lts`, `amd-ucode`, `limine` (hooks regenerated all
+   3 initramfs WITH the bcache hook + redeployed Limine EFI). Certified: `fsck -n`
+   clean, full-tree reads with ring cleared → 0 FAT errors. Backup:
+   `/root/esp-backup-20261028.img`. Root cause write-up: docs in session log —
+   non-journaled vfat + interrupted write (21 unsafe shutdowns on disk), exact torn
+   write unknowable; Oct 11 / Oct 14 / Oct 27 all wrote /boot.
