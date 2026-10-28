@@ -1,0 +1,11 @@
+# Toolchain pins for this repo (managed with mise: https://mise.jdx.dev)
+# CachyOS note: the OS ships GCC 16 — do not pin CC/CXX here without also
+# providing a matching compiler + PATH shim, or you will silently split toolchains.
+
+[tools]
+rust = "stable"
+python = "3.12"
+node = "lts"
+
+[env]
+PROJECT_NAME = "optane-hybrid-linux"
