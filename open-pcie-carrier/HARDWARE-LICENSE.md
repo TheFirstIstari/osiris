@@ -1,14 +1,13 @@
-# Hardware licensing intent
+# Hardware licensing
 
 All hardware design files in this directory (schematics, PCB layout, Gerbers,
-mechanicals — once they exist) are intended to be released under the
-**CERN Open Hardware Licence v2, Permissive (CERN-OHL-P)**.
+mechanicals — once they exist) are released under the
+**CERN Open Hardware Licence v2, Permissive (CERN-OHL-P-2.0)**.
 
-Precedent for this choice: community PCIe/M.2 carrier work released the same
-way (e.g. the Orange Pi Zero 3W PCIe-to-M.2 carrier).
+The full text is in [`LICENSE-CERN-OHL-P-2.0.txt`](./LICENSE-CERN-OHL-P-2.0.txt)
+(SPDX identifier `CERN-OHL-P-2.0`; copyright CERN 2020).
 
-Until the full licence text is added, treat every file here as:
-"CERN-OHL-P v2 intended — do not reuse commercially without checking back."
+Precedent for this choice: community PCIe/M.2 carrier work released the same way
+(e.g. the Orange Pi Zero 3W PCIe-to-M.2 carrier).
 
-(The SPEC.md in this directory is documentation and falls under the repo MIT
-LICENSE like everything else outside hardware design files.)
+The SPEC.md and other documentation in this repo fall under the repo MIT LICENSE.
