@@ -28,3 +28,10 @@ Reference box: `cachyos-x8664` (Minisforum MS-A2, Ryzen 9 9955HX), SSH as `power
    N97 is the only Alder Lake-N precedent, H10-on-H4 unconfirmed).
 7. **Pending:** reboot-verify bcache; btrfs fill-state fix (needs root unmount);
    security audit; carrier schematic phase (gated on EEPROM RISK-1).
+
+8. **ESP corruption found (Oct 28, blocks reboot test).** `/dev/nvme1n1p1` (vfat /boot)
+   shows invalid cluster chains + out-of-range clusters (`fsck.vfat -n`); some
+   entries unreadable (`e3bba…` dir, `loader`, splash). Drive SMART PASSED — filesystem
+   damage, not media. Full block backup at `/root/esp-backup-20261028.img` on the box.
+   DO NOT REBOOT until repaired: Limine may not be able to load kernel/initramfs.
+   Repair (umount + `fsck.vfat`, or reformat + regenerate) needs explicit approval.

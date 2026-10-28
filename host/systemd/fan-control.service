@@ -1,0 +1,14 @@
+[Unit]
+Description=MS-A2 Custom Thermal/Noise Control
+After=multi-user.target
+After=systemd-user-sessions.service
+
+[Service]
+Type=simple
+ExecStart=/home/powerpc/fan-control.sh
+Restart=always
+RestartSec=5
+Environment=TERM=xterm-256color
+
+[Install]
+WantedBy=default.target
